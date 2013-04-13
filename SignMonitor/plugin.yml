@@ -1,0 +1,3 @@
+name: SignMonitor
+main: com.gmail.smcerm.SignMonitor.SignMonitor
+version: 0.0.1
