@@ -27,8 +27,8 @@ public class SignMonitor extends JavaPlugin implements Listener {
 		Player player = event.getPlayer();
 		String[] text = event.getLines();
 		Location loc = event.getBlock().getLocation();
-		writeToFile("signs.txt", player.getName() + " placed a sign at " + "(" + String.valueOf(loc.getX()) + ", " + String.valueOf(loc.getY()) + 
-			", " + String.valueOf(loc.getZ()) + ") with the text: \n" + text[0] + "\n" + text[1] + "\n" + text[2] + "\n" + text[3] + "\n\n");
+		writeToFile("signs.txt", "User: " + player.getName() + "\n Location: " + "(" + String.valueOf(loc.getX()) + ", " + String.valueOf(loc.getY()) + 
+			", " + String.valueOf(loc.getZ()) + ")\n" + text[0] + "\n" + text[1] + "\n" + text[2] + "\n" + text[3] + "\n\n");
 	}
 	
 	/* Log sign changes */
