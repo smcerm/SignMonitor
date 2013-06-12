@@ -1,5 +1,6 @@
 package com.gmail.smcerm.SignMonitor;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import org.bukkit.Location;
@@ -15,6 +16,10 @@ public class SignMonitor extends JavaPlugin implements Listener {
 		PluginManager manager = getServer().getPluginManager();
 		manager.registerEvents(this, this);
 		this.saveResource("signs.txt", false);
+		File players = new File("plugins/SignMonitor/players");
+		if (!players.exists()){
+			players.mkdir();
+		}
 		getLogger().info("SignMonitor has been enabled.");
 	}
 
@@ -27,8 +32,10 @@ public class SignMonitor extends JavaPlugin implements Listener {
 		Player player = event.getPlayer();
 		String[] text = event.getLines();
 		Location loc = event.getBlock().getLocation();
-		writeToFile("signs.txt", "User: " + player.getName() + "\n Location: " + "(" + String.valueOf(loc.getX()) + ", " + String.valueOf(loc.getY()) + 
-			", " + String.valueOf(loc.getZ()) + ")\n" + text[0] + "\n" + text[1] + "\n" + text[2] + "\n" + text[3] + "\n\n");
+		writeToFile("signs.txt", "============================================================================\nUser: " + player.getName() + "\nLocation: " + "(" + String.valueOf(loc.getX()) + ", " + String.valueOf(loc.getY()) + 
+			", " + String.valueOf(loc.getZ()) + ")\n\n" + text[0] + "\n" + text[1] + "\n" + text[2] + "\n" + text[3] + "\n\n");
+		writeToFile("players/" + player.getName() + ".txt", "============================================================================\nLocation: " + "(" + String.valueOf(loc.getX()) + ", " + String.valueOf(loc.getY()) + 
+			", " + String.valueOf(loc.getZ()) + ")\n\n" + text[0] + "\n" + text[1] + "\n" + text[2] + "\n" + text[3] + "\n\n");
 	}
 	
 	/* Log sign changes */
